@@ -12,9 +12,10 @@ import { LoginComponent } from './login/login.component';
 import { appRoutes } from './routes.routing';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuestionComponent } from './quiz/question/question.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, LoginComponent, QuizComponent, QuestionComponent],
+  declarations: [AppComponent, SignupComponent, LoginComponent, QuizComponent, QuestionComponent, LeaderboardComponent],
   imports: [
     BrowserModule,
     CommonModule,

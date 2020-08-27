@@ -1,5 +1,7 @@
+import { Router } from '@angular/router';
 import { SharedService } from './../shared/shared.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -8,12 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
   user: any = {};
-  constructor(private sharedService: SharedService) {}
+  @ViewChild('signupForm', { static: false }) signupForm: NgForm;
+  data:
+    | { success: boolean; message: string; data?: undefined }
+    | {
+        success: boolean;
+        data: import('h:/quiz/src/app/model/user').User;
+        message?: undefined;
+      };
+  constructor(private sharedService: SharedService, private router: Router) {}
 
   ngOnInit(): void {}
   async signup() {
-    const user: any = await this.sharedService.signup(this.user);
-    if (user.success) console.log('suceess');
-    console.log(user.data);
+    this.data = await this.sharedService.signup(this.user);
+    if (this.data.success) {
+      this.router.navigate(['/quiz']);
+    } else {
+      this.signupForm.reset();
+    }
+    this.user = {};
   }
 }

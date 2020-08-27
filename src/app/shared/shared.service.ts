@@ -1,7 +1,8 @@
 import { User } from './../model/user';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie';
-import { throwError, Observable, Subject, BehaviorSubject } from 'rxjs';
+import { throwError, BehaviorSubject } from 'rxjs';
+import { map, max } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
@@ -10,12 +11,14 @@ export class SharedService {
   users: User[] = [
     { name: 'navin', email: 'navingenex@gmail.com', password: '12345' },
   ];
+  score: number = 0;
+  leaderBoard = [];
   constructor(private cookie: CookieService, private http: HttpClient) {}
 
   async signin(payload: User) {
     if (payload.email && payload.password) {
       const user = await this.findUser(payload);
-      if (user) {
+      if (user.length) {
         await this.setCredential(user);
         return true;
       } else {
@@ -47,7 +50,7 @@ export class SharedService {
         };
       } else {
         this.users.push(user);
-        this.setCredential(user);
+        this.setCredential([user]);
         return {
           success: true,
           data: user,
@@ -64,6 +67,26 @@ export class SharedService {
   }
 
   startQuiz() {
-    return this.http.get('./assets/questions.json');
+    return this.http
+      .get('./assets/questions.json')
+      .pipe(map((m: any) => m.sort(() => Math.random() - 0.5)));
+  }
+  storeScore(score: number) {
+    this.score += score;
+  }
+  resetScore() {
+    this.score = 0;
+  }
+  async calculateScore(score: number) {
+    this.storeScore(score);
+    const user: User = JSON.parse(this.cookie.get('user'));
+    this.leaderBoard.push({
+      name: user[0].name,
+      score: this.score,
+    });
+    return this.score;
+  }
+  getLeaderBoardScore() {
+    return this.leaderBoard.sort((a, b) => b.score - a.score).slice(0, 10);
   }
 }

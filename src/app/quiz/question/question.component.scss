@@ -1,0 +1,27 @@
+.question {
+  p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  ul {
+    li {
+      list-style-type: none;
+      padding: 10px;
+    }
+    .none {
+      background: #fff;
+      color: #000;
+    }
+    .right {
+      background: green;
+      color: #fff;
+    }
+    .wrong {
+      background: red;
+      color: #fff;
+    }
+  }
+  .btn-light:disabled {
+    cursor: not-allowed;
+  }
+}

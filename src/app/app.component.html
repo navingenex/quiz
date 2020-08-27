@@ -1,5 +1,5 @@
 <nav class="nav justify-content-center" *ngIf="isLoggedIn">
-  <a class="nav-link active" href="#">Leaderboard</a>
+  <a class="nav-link active" [routerLink]="['/leaderboard']">Leaderboard</a>
   <a class="nav-link" (click)="signOut()">Signout</a>
 
 </nav>

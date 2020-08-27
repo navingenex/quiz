@@ -5,7 +5,7 @@
     "difficulty": "medium",
     "question": "What is the capital of Peru?",
     "correct_answer": "Lima",
-    "incorrect_answers": ["Santiago", "Montevideo", "Buenos Aires"]
+    "answer": ["Santiago", "Montevideo", "Lima", "Buenos Aires"]
   },
   {
     "category": "Entertainment: Video Games",
@@ -13,10 +13,11 @@
     "difficulty": "medium",
     "question": "Which of these is NOT a terrorist faction in Counter-Strike (2000)?",
     "correct_answer": "Midwest Militia",
-    "incorrect_answers": [
+    "answer": [
       "Phoenix Connection",
       "Elite Crew",
-      "Guerrilla Warfare"
+      "Guerrilla Warfare",
+      "Midwest Militia"
     ]
   },
   {
@@ -25,7 +26,7 @@
     "difficulty": "easy",
     "question": "Which game did NOT get financed via Crowdfunding?",
     "correct_answer": "Enter the Gungeon",
-    "incorrect_answers": ["Town of Salem", "Undertale", "Tower Unite"]
+    "answer": ["Town of Salem", "Enter the Gungeon", "Undertale", "Tower Unite"]
   },
   {
     "category": "Geography",
@@ -33,7 +34,7 @@
     "difficulty": "medium",
     "question": "What is the capital of Australia?",
     "correct_answer": "Canberra",
-    "incorrect_answers": ["Sydney", "Melbourne", "Brisbane"]
+    "answer": ["Sydney", "Melbourne", "Brisbane", "Canberra"]
   },
   {
     "category": "Science & Nature",
@@ -41,6 +42,6 @@
     "difficulty": "hard",
     "question": "What is the scientific name of the knee cap?",
     "correct_answer": "Patella",
-    "incorrect_answers": ["Femur", "Foramen Magnum", "Scapula"]
+    "answer": ["Patella", "Femur", "Foramen Magnum", "Scapula"]
   }
 ]

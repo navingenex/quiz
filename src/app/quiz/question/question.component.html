@@ -1,1 +1,10 @@
-<p>question works!</p>
+<div class="question" *ngIf="question">
+  <p>{{questionNo}}. {{question?.question}}</p>
+  <ul>
+    <li *ngFor="let answer of question?.answer;let i=index"
+      [ngClass]="[selectedAnswerIndex==i &&  correctAnswerIndex==selectedAnswerIndex?'right':wrong && selectedAnswerIndex==i?'wrong':correctAnswerIndex==i?'right':'']"
+      class="none" (click)="
+      submitAnswer(answer,i)"><span>{{i+1}}.</span> {{answer}}</li>
+  </ul>
+  <button class="btn btn-light" [disabled]="selectedAnswerIndex==undefined" (click)="nextQuestion()">Submit</button>
+</div>

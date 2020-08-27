@@ -22,7 +22,8 @@ export class CanActivateGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.cookie.get('user')) return true;
-    this.router.navigate(['/login']);
+    if (this.cookie.get('user')) {
+      return true;
+    } else this.router.navigate(['/login']);
   }
 }

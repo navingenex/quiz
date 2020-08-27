@@ -1,0 +1,23 @@
+<div class="container">
+  <button class="btn btn-light" [routerLink]="['/quiz']">{{leaderBoard.length?'Retry':'Goto quiz'}}</button>
+  <table class="table" *ngIf="leaderBoard.length">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>User </th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let board of leaderBoard;let i=index">
+        <td scope="row">{{i+1}}</td>
+        <td>{{board?.name}}</td>
+        <td>{{board?.score}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <ul>
+    <li></li>
+  </ul>
+</div>

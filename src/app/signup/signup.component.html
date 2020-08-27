@@ -2,6 +2,7 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title text-center">Signup</h5>
+      <p *ngIf="data?.message" class="alert alert-warning">{{data?.message}}</p>
       <form #signupForm="ngForm" (ngSubmit)="signup()">
         <div class="form-group">
           <input type="text" class="form-control" name="name" id="name" [(ngModel)]="user.name" #name="ngModel"
