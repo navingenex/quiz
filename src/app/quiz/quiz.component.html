@@ -1,1 +1,11 @@
-<p>quiz works!</p>
+<div class="container">
+
+  <div class="card">
+    <div class="card-header">
+      <a type="button" (click)="startTest()" class="btn btn-primary"> {{txtButton}}</a>
+      <div class="card-body" *ngIf="questions">
+        <app-question (answered)="nextQuestion($event)" [question]="questions[0]"></app-question>
+      </div>
+    </div>
+  </div>
+</div>

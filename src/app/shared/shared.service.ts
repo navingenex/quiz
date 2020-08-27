@@ -2,6 +2,7 @@ import { User } from './../model/user';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie';
 import { throwError, Observable, Subject, BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class SharedService {
@@ -9,7 +10,7 @@ export class SharedService {
   users: User[] = [
     { name: 'navin', email: 'navingenex@gmail.com', password: '12345' },
   ];
-  constructor(private cookie: CookieService) {}
+  constructor(private cookie: CookieService, private http: HttpClient) {}
 
   async signin(payload: User) {
     if (payload.email && payload.password) {
@@ -60,5 +61,9 @@ export class SharedService {
       (u: User) => u.email == user.email && u.password == user.password
     );
     return found;
+  }
+
+  startQuiz() {
+    return this.http.get('./assets/questions.json');
   }
 }
